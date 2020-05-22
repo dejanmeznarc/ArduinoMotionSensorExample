@@ -9,8 +9,10 @@ void setup() {
   Wire.begin();
   Wire.setClock(400000);
 
-  Serial.begin(38400);
-  ret = mympu_open(200);
+  Serial.begin(500000);
+
+  ret = mympu_open(250); //default 200
+
   Serial.print("MPU init: "); Serial.println(ret);
   Serial.print("Free mem: "); Serial.println(freeRam());
 
@@ -20,6 +22,10 @@ unsigned int c = 0; //cumulative number of successful MPU/DMP reads
 unsigned int np = 0; //cumulative number of MPU/DMP reads that brought no packet back
 unsigned int err_c = 0; //cumulative number of MPU/DMP reads that brought corrupted packet
 unsigned int err_o = 0; //cumulative number of MPU/DMP reads that had overflow bit set
+
+
+
+unsigned long lastRead = 0;
 
 void loop() {
   ret = mympu_update();
@@ -35,13 +41,15 @@ void loop() {
       return;
   }
 
-  if (!(c % 25)) {
-    Serial.print(np); Serial.print("  "); Serial.print(err_c); Serial.print(" "); Serial.print(err_o);
-    Serial.print(" Y: "); Serial.print(mympu.ypr[0]);
-    Serial.print(" P: "); Serial.print(mympu.ypr[1]);
-    Serial.print(" R: "); Serial.print(mympu.ypr[2]);
-    Serial.print("\tgy: "); Serial.print(mympu.gyro[0]);
-    Serial.print(" gp: "); Serial.print(mympu.gyro[1]);
-    Serial.print(" gr: "); Serial.println(mympu.gyro[2]);
-  }
+
+  // Serial.print(np); Serial.print("  "); Serial.print(err_c);
+  Serial.print(" Y "); Serial.print(mympu.ypr[0]);
+  Serial.print(" P "); Serial.print(mympu.ypr[1]);
+  Serial.print(" R "); Serial.print(mympu.ypr[2]);
+  //Serial.print("\tgy: "); Serial.print(mympu.gyro[0]);
+  // Serial.print(" gp: "); Serial.print(mympu.gyro[1]);
+  // Serial.print(" gr: "); Serial.print(mympu.gyro[2]);
+  Serial.print(" t: "); Serial.println(micros() - lastRead);
+  lastRead = micros();
+
 }
