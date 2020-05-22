@@ -48,3 +48,11 @@ so Arduino/ESP never sends ACK back to MPU; and MPU is busy waiting for ACK.
  1  - MPU reads requests (ACK recieved), but there is no response
  2  - returned data is
 3  - MPU returns overflow bit set
+
+## getting data
+```c++
+mympu.ypr[0] //yaw
+mympu.ypr[1] //pitch
+mympu.ypr[2] //roll
+
+```
