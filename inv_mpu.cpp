@@ -24,6 +24,8 @@
 #include <math.h>
 #include "inv_mpu.h"
 
+#define MPU9250
+
 /* The following functions must be defined for this platform:
  * i2c_write(unsigned char slave_addr, unsigned char reg_addr,
  *      unsigned char length, unsigned char const *data)
@@ -2821,4 +2823,3 @@ lp_int_restore:
 /**
  *  @}
  */
-

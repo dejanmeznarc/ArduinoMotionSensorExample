@@ -45,6 +45,9 @@ THE SOFTWARE.
 
 #include "I2Cdev.h"
 
+#define min(a,b) ((a<b)?a:b)
+
+
 #if I2CDEV_IMPLEMENTATION == I2CDEV_ARDUINO_WIRE
 
     #ifdef I2CDEV_IMPLEMENTATION_WARNINGS
