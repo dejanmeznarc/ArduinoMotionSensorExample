@@ -1,9 +1,13 @@
 ArduinoMotionSensorExample
 ======================
 
-MPU6050/MPU6500/MPU9150/MPU9250 over I2c for Arduino
+Original work is here: https://github.com/rpicopter/ArduinoMotionSensorExample
+I just made it work on ESP8622
 
-A clean example of using INV_MPU library on Arduino. Tested on Atmega328.
+
+MPU6050/MPU6500/MPU9150/MPU9250 over I2c for ESP8622
+
+A clean example of using INV_MPU library on ESP8622. Tested on Atmega328.
 
 
 Features:
